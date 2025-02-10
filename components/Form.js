@@ -42,7 +42,9 @@ function Form() {
     //   title: enteredTitle,
     // });
 
-    setSuccess("Blog created successfully!");
+    setSuccess(
+      "Blog created successfully! & It will be visiable after 10 min."
+    );
   }
 
   return (

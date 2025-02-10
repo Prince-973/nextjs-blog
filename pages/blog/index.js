@@ -27,6 +27,6 @@ export async function getStaticProps() {
     props: {
       cardData: serializedPosts,
     },
-    revalidate: 10,
+    revalidate: 600,
   };
 }

@@ -15,18 +15,19 @@ function CardGrid(props) {
         height: "100vh",
       }}
     >
-      {props.cardData.map((card) => {
-        return (
-          <Grid2 item key={card.id}>
-            <Card1
-              id={card.id}
-              title={card.title}
-              name={card.name}
-              description={card.description}
-            />
-          </Grid2>
-        );
-      })}
+      {props.cardData &&
+        props.cardData.map((card) => {
+          return (
+            <Grid2 item key={card.id}>
+              <Card1
+                id={card.id}
+                title={card.title}
+                name={card.name}
+                description={card.description}
+              />
+            </Grid2>
+          );
+        })}
     </Grid2>
   );
 }
