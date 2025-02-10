@@ -2,11 +2,16 @@ import React from "react";
 import Card1 from "@/components/card";
 import { Grid2 } from "@mui/material";
 import { connectDatabase } from "@/lib/db";
+import Head from "next/head";
 
 function BlogPost(props) {
   const { title, name, id, description } = props.Post;
   return (
     <>
+      <Head>
+        <title>Blog</title>
+        <meta name="description" content="Specific Blog" />
+      </Head>
       <Grid2
         container
         spacing={2}

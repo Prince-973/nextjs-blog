@@ -1,11 +1,16 @@
 // import { Card } from "@mui/material";
 import CardGrid from "@/components/cards";
 import { connectDatabase } from "@/lib/db";
+import Head from "next/head";
 import React from "react";
 
 function BlogsPage(props) {
   return (
     <>
+      <Head>
+        <title>Blogs</title>
+        <meta name="description" content="All the blogs" />
+      </Head>
       <CardGrid cardData={props.cardData} />
     </>
   );
