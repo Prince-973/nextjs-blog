@@ -1,7 +1,7 @@
 import React from "react";
-import { cardData } from ".";
 import Card1 from "@/components/card";
 import { Grid } from "@mui/material";
+import { connectDatabase } from "@/lib/db";
 
 function BlogPost(props) {
   const { title, name, id, description } = props.Post;
@@ -28,20 +28,37 @@ export default BlogPost;
 export async function getStaticProps(context) {
   const { params } = context;
   const postId = parseInt(params.id, 10); // Convert id to number
-  const Post = cardData.find((card) => card.id === postId);
+  const client = await connectDatabase();
+  const db = client.db();
+  const posts = await db.collection("posts").find({}).toArray();
+  const serializedPosts = posts.map((post, ind) => ({
+    ...post,
+    id: ind,
+    _id: post._id.toString(), // Convert ObjectId to string
+  }));
+  const Post = serializedPosts.find((card) => card.id === postId);
 
   return {
     props: {
       Post,
     },
+    revalidate: 10,
   };
 }
 
 export async function getStaticPaths() {
-  const paths = cardData.map((card) => ({
+  const client = await connectDatabase();
+  const db = client.db();
+  const posts = await db.collection("posts").find({}).toArray();
+  const serializedPosts = posts.map((post, ind) => ({
+    ...post,
+    id: ind,
+    _id: post._id.toString(), // Convert ObjectId to string
+  }));
+  const paths = serializedPosts.map((card) => ({
     params: { id: card.id.toString() },
   }));
   // console.log(paths);
 
-  return { paths: paths, fallback: false };
+  return { paths: paths, fallback: "blocking" };
 }

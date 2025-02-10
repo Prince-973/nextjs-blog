@@ -21,7 +21,7 @@ function Card1(props) {
   const formatedDate = date.toISOString().split("T")[0];
   function handleClick() {
     router.push(`/blog/${id}`);
-    console.log(`/blog/${id}`);
+    // console.log(`/blog/${id}`);
   }
   return (
     <div>
@@ -38,7 +38,7 @@ function Card1(props) {
         <CardMedia
           component="img"
           height="194"
-          image="/static/images/cards/paella.jpg"
+          image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdYdJVyCJXvqzlr8sWadFj0vXyqgsGM5_AcOb14OtfSIF8S7xd&s"
           alt="Paella dish"
         />
         <CardContent>
