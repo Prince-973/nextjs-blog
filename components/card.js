@@ -32,11 +32,6 @@ function Card1(props) {
               {word}
             </Avatar>
           }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
           title={title}
           subheader={formatedDate}
         />
