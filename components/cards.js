@@ -1,11 +1,11 @@
-import Grid from "@mui/material/Grid";
+import { Grid2 } from "@mui/material";
 import Card1 from "./card";
 
 // export default Cards;
 
 function CardGrid(props) {
   return (
-    <Grid
+    <Grid2
       container
       spacing={2}
       sx={{
@@ -17,17 +17,17 @@ function CardGrid(props) {
     >
       {props.cardData.map((card) => {
         return (
-          <Grid item key={card.id}>
+          <Grid2 item key={card.id}>
             <Card1
               id={card.id}
               title={card.title}
               name={card.name}
               description={card.description}
             />
-          </Grid>
+          </Grid2>
         );
       })}
-    </Grid>
+    </Grid2>
   );
 }
 

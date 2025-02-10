@@ -15,7 +15,6 @@ function Form() {
   const name = useRef();
   const description = useRef();
   const title = useRef();
-  const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
   async function handleSubmit(event) {
@@ -34,7 +33,7 @@ function Form() {
         title: enteredTitle,
       }),
     });
-    console.log(response);
+    // console.log(response);
 
     // cardData.push({
     //   id: cardData.length + 1,

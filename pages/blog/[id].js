@@ -1,13 +1,13 @@
 import React from "react";
 import Card1 from "@/components/card";
-import { Grid } from "@mui/material";
+import { Grid2 } from "@mui/material";
 import { connectDatabase } from "@/lib/db";
 
 function BlogPost(props) {
   const { title, name, id, description } = props.Post;
   return (
     <>
-      <Grid
+      <Grid2
         container
         spacing={2}
         sx={{
@@ -18,7 +18,7 @@ function BlogPost(props) {
         }}
       >
         <Card1 title={title} id={id} name={name} description={description} />;
-      </Grid>
+      </Grid2>
     </>
   );
 }
