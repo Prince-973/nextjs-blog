@@ -16,35 +16,44 @@ function Form() {
   const description = useRef();
   const title = useRef();
   const [success, setSuccess] = useState(null);
+  const [error, setError] = useState(null);
 
   async function handleSubmit(event) {
     event.preventDefault();
     const enteredName = name.current.value;
     const enteredDescription = description.current.value;
     const enteredTitle = title.current.value;
-    const response = await fetch("/api/blogs/post", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: enteredName,
-        description: enteredDescription,
-        title: enteredTitle,
-      }),
-    });
-    // console.log(response);
 
-    // cardData.push({
-    //   id: cardData.length + 1,
-    //   description: enteredDescription,
-    //   name: enteredName,
-    //   title: enteredTitle,
-    // });
+    try {
+      const response = await fetch("/api/blogs/post", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: enteredName,
+          description: enteredDescription,
+          title: enteredTitle,
+        }),
+      });
+      // console.log(response);
 
-    setSuccess(
-      "Blog created successfully! & It will be visiable after 10 min."
-    );
+      // cardData.push({
+      //   id: cardData.length + 1,
+      //   description: enteredDescription,
+      //   name: enteredName,
+      //   title: enteredTitle,
+      // });
+      if (!response.ok) {
+        throw new Error("Network response was not ok. Try Again later");
+      }
+
+      setSuccess(
+        "Blog created successfully! & It will be visiable after 10 min."
+      );
+    } catch (error) {
+      setError(error.message);
+    }
   }
 
   return (
@@ -66,6 +75,11 @@ function Form() {
             {success && (
               <Box sx={{ mb: 2 }}>
                 <Alert severity="success">{success}</Alert>
+              </Box>
+            )}
+            {error && (
+              <Box sx={{ mb: 2 }}>
+                <Alert severity="error">{error}</Alert>
               </Box>
             )}
             <form onSubmit={handleSubmit}>
