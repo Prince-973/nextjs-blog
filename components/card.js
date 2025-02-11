@@ -10,8 +10,6 @@ import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
-import { styled } from "@mui/material/styles";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useRouter } from "next/router";
 function Card1(props) {
   const router = useRouter();

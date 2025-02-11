@@ -14,7 +14,6 @@ function NavBar() {
             </Button>
           </Link>
         </Typography>
-
         {/* Navigation Links */}
         <Button color="inherit">
           <Link href="/" passHref>

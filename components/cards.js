@@ -1,11 +1,13 @@
-import { Grid2 } from "@mui/material";
+import { Grid } from "@mui/material";
 import Card1 from "./card";
 
-// export default Cards;
-
 function CardGrid(props) {
+  if (!props.cardData || props.cardData.length === 0) {
+    return null;
+  }
+
   return (
-    <Grid2
+    <Grid
       container
       spacing={2}
       sx={{
@@ -15,20 +17,17 @@ function CardGrid(props) {
         height: "100vh",
       }}
     >
-      {props.cardData &&
-        props.cardData.map((card) => {
-          return (
-            <Grid2 item key={card.id}>
-              <Card1
-                id={card.id}
-                title={card.title}
-                name={card.name}
-                description={card.description}
-              />
-            </Grid2>
-          );
-        })}
-    </Grid2>
+      {props.cardData.map((card) => (
+        <Grid item={true} xs={12} sm={6} md={4} key={card.id}>
+          <Card1
+            id={card.id}
+            title={card.title}
+            name={card.name}
+            description={card.description}
+          />
+        </Grid>
+      ))}
+    </Grid>
   );
 }
 
