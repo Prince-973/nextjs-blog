@@ -48,10 +48,12 @@ function Form() {
         throw new Error("Network response was not ok. Try Again later");
       }
 
+      setError(null);
       setSuccess(
         "Blog created successfully! & It will be visiable after 10 min."
       );
     } catch (error) {
+      setSuccess(null);
       setError(error.message);
     }
   }
